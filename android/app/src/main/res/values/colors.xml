@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AppColors.ink: the launch screen matches the Flutter splash, so there
+         is no flash between them. -->
+    <color name="ink">#0A0A0A</color>
+</resources>

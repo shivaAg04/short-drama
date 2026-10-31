@@ -1,0 +1,61 @@
+Objective
+Build a high-fidelity video playback component that demonstrates best-in-class UI and UX polish.
+Task Overview
+You are tasked with building the Interactive Player Layer for a micro-drama platform. This assignment
+focuses on the user's first session: the journey from Episode 1 through to the paywall at Episode 7,
+including monetised ad breaks along the way. We are looking for fluid motion, spatial awareness in
+transitions, and high-performance rendering.
+Core Requirements
+1. The Vertical Video Feed
+• Implement a vertical PageView containing at least seven sequential episodes of looping video clips.
+• Transitions between videos must be immediate and snappy.
+• Include a custom loading state. Instead of a standard Material spinner, implement a skeleton shimmer
+or a branded ghost element that appears while the video is buffering.
+2. Interactive Ad Slots (Google Ad Manager)
+• Insert an interactive ad slot after every 3 episodes, served through Google Ad Manager (GAM) using
+the google_mobile_ads package. The feed order should be:
+E1 E2 E3 AD E4 E5 E6 AD E7
+• Ad slots are full-screen pages in the same PageView and must not count toward episode numbering.
+• Ads must be preloaded ahead of the user reaching the slot so swiping into an ad feels as snappy as
+swiping into a video. Use the same branded skeleton while an ad is still loading.
+• If an ad fails to load or returns no fill, the slot must be removed gracefully without a visible jump or
+broken page.
+• Episode gestures (double-tap to like, progress scrubbing) must be disabled on ad pages, while the ad's
+own interactive elements (CTA, taps) must remain fully functional.
+• Use GAM test ad units only; do not use production ad units.
+3. Emotional Micro-Interactions
+Double-Tap to Like
+• On double-tap, a heart icon must appear at the exact touch location.
+• The interaction must use a scale and fade animation with spring physics to feel organic.
+Progress Scrubbing
+• Build a custom-painted progress bar at the bottom of the player.
+• As the user drags across the screen, the progress bar should expand vertically and show a time
+preview (e.g., 00:05 / 00:15) that follows the finger position.
+
+Micro-Drama Interactive Player — Flutter Assignment Page 2
+4. The Retention Paywall (Episode 7)
+• Trigger: When the user lands on Episode 7, the paywall overlay must appear immediately. Episode 7
+must not play at all, not even partially.
+• Navigation Lock: The user must not be able to scroll forward past Episode 7. Scrolling back to
+previous episodes must remain fully functional. Implement this with custom scroll physics rather than
+disabling the PageView entirely. Returning to Episode 7 must re-trigger the paywall.
+• Visuals: The background (Episode 7's first frame or poster) must be blurred in real time using a
+BackdropFilter.
+• Animation: The paywall card must slide up from the bottom with an overshoot/bounce effect.
+• CTA: The "Unlock Episode" button must feature a continuous shimmering light effect that sweeps
+across the button every 3 seconds to draw user attention. Tapping it should simulate a successful
+unlock, dismiss the paywall, remove the forward-scroll lock, and start playback.
+Evaluation Criteria
+Criterion What we look for
+Animation Fidelity Use of custom curves, spring physics, and staggered animations.
+UX Intuition Responsiveness of gestures, overall "feel" of the player, and how naturally ads
+
+and the paywall sit within the feed.
+
+Performance Efficient widget rebuilding, asset handling, and video/ad preloading and
+
+disposal.
+
+Code Architecture Separation of UI logic from business logic, including feed composition
+
+(episodes + ad slots) and paywall/lock state.
