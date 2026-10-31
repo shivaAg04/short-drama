@@ -6,6 +6,7 @@
 
 A vertical feed of short drama episodes for [Alright!](https://alright.watch), built in Flutter.
 
+[![CI](https://github.com/shivaAg04/short-drama/actions/workflows/ci.yml/badge.svg)](https://github.com/shivaAg04/short-drama/actions/workflows/ci.yml)
 ![Flutter](https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-3.13-0175C2?logo=dart&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-169%20passing-2ea44f)
@@ -17,7 +18,7 @@ A vertical feed of short drama episodes for [Alright!](https://alright.watch), b
 <img src="docs/media/swipe.gif" width="200" alt="Swiping the feed"> &nbsp;
 <img src="docs/media/paywall.gif" width="200" alt="Episode 7 paywall">
 
-### [▶️ Watch the full 36-second demo](docs/media/demo.mp4)
+### [▶️ Watch the 36-second demo](docs/media/demo.mp4) &nbsp;·&nbsp; [📲 Download the APK](https://github.com/shivaAg04/short-drama/releases/latest)
 
 </div>
 
@@ -81,7 +82,9 @@ A vertical feed of short drama episodes for [Alright!](https://alright.watch), b
 
 ## 🏃 Run it
 
-Built and tested with **Flutter 3.47.2 / Dart 3.13** (stable).
+📲 **Just want to try it?** Grab the APK from the [latest release](https://github.com/shivaAg04/short-drama/releases/latest) and install it on an Android phone (allow installs from unknown sources).
+
+🛠️ **From source:** built and tested with **Flutter 3.47.2 / Dart 3.13** (stable).
 
 ```sh
 flutter pub get
@@ -232,6 +235,8 @@ Widgets only read state. Every decision about what plays, what loads and what is
 | ✅ Tests | 169, all passing |
 | 📊 Line coverage | 100% of `lib/` (1852 lines), except the `main.dart` bootstrap |
 | 🧹 Lints | [`very_good_analysis`](https://pub.dev/packages/very_good_analysis), 0 issues |
+
+🤖 [CI](.github/workflows/ci.yml) runs `flutter analyze`, the full suite with coverage, and `spec_coverage --strict` on every push, so these numbers can't quietly go stale.
 
 <details>
 <summary>🔬 <b>How it's tested</b></summary>
