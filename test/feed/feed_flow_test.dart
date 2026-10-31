@@ -94,6 +94,23 @@ void main() {
   Future<void> close(WidgetTester tester) =>
       tester.pumpWidget(const SizedBox());
 
+  testWidgets('[AD-1] the first ad is requested at launch, the second as '
+      'soon as the first break is passed', (tester) async {
+    await pumpFeed(tester);
+    expect(ads.map((a) => a.breakId), ['break:1']);
+
+    await loadAll(tester);
+    ads.single.onFilled();
+    for (var page = 0; page < 3; page++) {
+      await swipeUp(tester);
+    }
+    expect(ads.map((a) => a.breakId), ['break:1'], reason: 'on the break');
+
+    await swipeUp(tester);
+    expect(ads.map((a) => a.breakId), ['break:1', 'break:2']);
+    await close(tester);
+  });
+
   testWidgets('[PLAY-2] swiping up plays the next episode and pauses the one '
       'before', (tester) async {
     await pumpFeed(tester);

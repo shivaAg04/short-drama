@@ -42,12 +42,10 @@ final class FeedState extends Equatable {
     return at == -1 ? null : at;
   }
 
-  /// Ids of the ad breaks within [pages] pages from the focused one,
-  /// counting the focused page itself.
-  List<String> breaksAhead(int pages) => [
-    for (final e in entries.skip(page).take(pages + 1))
-      if (e is AdBreakEntry) e.id,
-  ];
+  /// The first ad break at or after the focused page: the one whose ad
+  /// should be loading now (AD-1). Null when no break is left ahead.
+  String? get nextBreak =>
+      entries.skip(page).whereType<AdBreakEntry>().firstOrNull?.id;
 
   FeedState focusOn(String id) =>
       FeedState(episodes: episodes, dropped: dropped, focusId: id);

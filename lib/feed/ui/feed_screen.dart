@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rume/ads/ad_break_page.dart';
-import 'package:rume/ads/ad_config.dart';
 import 'package:rume/ads/break_ad_loader.dart';
 import 'package:rume/engagement/data/share_service.dart';
 import 'package:rume/engagement/state/engagement_cubit.dart';
@@ -85,7 +84,10 @@ class _FeedScreenState extends State<FeedScreen> {
   void _syncPool() =>
       _pool.update(PlaybackPlan.from(_feed.state, _paywall.state));
 
-  void _warmAds() => _ads.warm(_feed.state.breaksAhead(AdConfig.warmAhead));
+  void _warmAds() {
+    final next = _feed.state.nextBreak;
+    if (next != null) _ads.warm([next]);
+  }
 
   // Breaks whose ads have been handed back to the loader.
   Set<String> _discarded = const {};

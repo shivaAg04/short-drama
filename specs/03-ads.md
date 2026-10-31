@@ -9,7 +9,9 @@
 
 ## Acceptance criteria
 
-- **AD-1** A slot starts loading when it is within 2 pages ahead of the user.
+- **AD-1** The next ad break ahead of the user (or the one on screen) is
+  always loading: the first is requested at launch, behind the splash, and
+  each later one as soon as the user passes the break before it.
 - **AD-2** A slot still loading shows the branded shimmer skeleton.
 - **AD-3** An error, no fill, or a load longer than 8 s reports the slot as
   failed to the feed (handled by FEED-5..8).
@@ -38,6 +40,12 @@
   Google's `native-video` sample unit returns no fill (code 3) for test
   devices, while `native` fills. `--dart-define=AD_NO_FILL=true` forces no fill
   everywhere to demo graceful removal.
+- **Request the next break as early as possible (AD-1).** A real-network GAM
+  load takes 1–3 s, more for the session's first request while the SDK is
+  still starting. Requesting only two pages ahead was verified on a phone to
+  show the skeleton when the user swiped quickly. Rejected: a fixed page
+  distance, which is only as early as the user is slow. Cost: one request for
+  a break the user may never reach; an impression only counts when shown.
 - **Ad pages are kept alive** once built, so swiping back to one doesn't
   rebuild the native view.
 

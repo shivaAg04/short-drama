@@ -16,9 +16,6 @@ abstract final class AdConfig {
   static String unitFor(String breakId) =>
       _forceNoFill ? _missingTestUnit : _nativeTestUnit;
 
-  /// How many pages ahead of the user a break's ad is requested.
-  static const warmAhead = 2;
-
   /// An ad still pending after this long is treated as empty.
   static const loadTimeout = Duration(seconds: 8);
 }

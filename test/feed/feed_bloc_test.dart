@@ -93,15 +93,19 @@ void main() {
     verify: (b) => expect(b.state.dropped, {_break1}),
   );
 
-  test('[AD-1] breaks up to two pages ahead are due for warming', () {
-    List<String> from(int page) => FeedState(
-      episodes: _episodes,
-      focusId: layoutIdAt(page),
-    ).breaksAhead(2);
-    expect(from(0), isEmpty);
-    expect(from(1), [_break1]);
-    expect(from(3), [_break1]);
-    expect(from(5), ['break:2']);
+  test('[AD-1] the next break ahead is always the one to load', () {
+    String? from(int page) =>
+        FeedState(episodes: _episodes, focusId: layoutIdAt(page)).nextBreak;
+    expect(from(0), _break1, reason: 'requested at launch');
+    expect(from(2), _break1);
+    expect(from(_break1Page), _break1, reason: 'still wanted on screen');
+    expect(from(_break1Page + 1), 'break:2', reason: 'once break:1 is passed');
+    expect(from(8), isNull, reason: 'no break after E7');
+  });
+
+  test('[AD-1] a dropped break hands over to the one after it', () {
+    final state = FeedState(episodes: _episodes).without(_break1);
+    expect(state.nextBreak, 'break:2');
   });
 
   blocTest<FeedBloc, FeedState>(

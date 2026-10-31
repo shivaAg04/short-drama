@@ -9,7 +9,7 @@ A vertical feed of short drama episodes for [Alright!](https://alright.watch), b
 [![CI](https://github.com/shivaAg04/short-drama/actions/workflows/ci.yml/badge.svg)](https://github.com/shivaAg04/short-drama/actions/workflows/ci.yml)
 ![Flutter](https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-3.13-0175C2?logo=dart&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-169%20passing-2ea44f)
+![Tests](https://img.shields.io/badge/tests-171%20passing-2ea44f)
 ![Coverage](https://img.shields.io/badge/coverage-100%25-2ea44f)
 ![Specs](https://img.shields.io/badge/acceptance%20criteria-84-6f42c1)
 ![Lints](https://img.shields.io/badge/very__good__analysis-0%20issues-blueviolet)
@@ -232,8 +232,8 @@ Widgets only read state. Every decision about what plays, what loads and what is
 | | |
 |---|---|
 | 🎯 Acceptance criteria | 84 in 9 specs: 80 automated (all covered) + 4 judged on a device |
-| ✅ Tests | 169, all passing |
-| 📊 Line coverage | 100% of `lib/` (1852 lines), except the `main.dart` bootstrap |
+| ✅ Tests | 171, all passing |
+| 📊 Line coverage | 100% of `lib/` (1853 lines), except the `main.dart` bootstrap |
 | 🧹 Lints | [`very_good_analysis`](https://pub.dev/packages/very_good_analysis), 0 issues |
 
 🤖 [CI](.github/workflows/ci.yml) runs `flutter analyze`, the full suite with coverage, and `spec_coverage --strict` on every push, so these numbers can't quietly go stale.
