@@ -20,6 +20,12 @@ A vertical feed of short drama episodes for [Alright!](https://alright.watch), b
 
 ### [▶️ Watch the 36-second demo](docs/media/demo.mp4) &nbsp;·&nbsp; [📲 Download the APK](https://github.com/shivaAg04/short-drama/releases/latest)
 
+### 🎥 Full walkthrough: every feature, timestamped
+
+<a href="docs/media/walkthrough.mp4"><img src="docs/media/walkthrough.gif" width="300" alt="Walkthrough preview: double-tap like, top bar hiding after 3 s, an instant ad and a failed ad being handled"></a>
+
+**[▶️ Watch the 1:54 walkthrough](docs/media/walkthrough.mp4)**: the full app (33 features), ads that show instantly, and what happens when an ad fails.
+
 </div>
 
 ---
